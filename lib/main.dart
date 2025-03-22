@@ -19,6 +19,17 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  // VARIABLES START
+  TextEditingController itemController = TextEditingController();
+  TextEditingController groupController = TextEditingController();
+
+  List<String> items = [];
+  List<List<String>> groups = [];
+  Set<String> groupedItems = {};
+  bool isGenerating = false;
+  int currentGroup = 0;
+  // VARIABLES END
+
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
