@@ -476,6 +476,81 @@ class _MyAppState extends State<MyApp> {
                 SizedBox(height: 15),
 
                 // CONTENT END  THIRD
+                // CONTENT START  FOURTH
+                isGenerating != true
+                    ? Container(
+                      width: double.maxFinite,
+                      height: MediaQuery.of(context).size.height * 0.55,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: CupertinoColors.inactiveGray.withOpacity(0.2),
+                      ),
+                      child: SingleChildScrollView(
+                        child: Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: items.map((item) => Text(item)).toList(),
+                          ),
+                        ),
+                      ),
+                    )
+                    : SizedBox.shrink(),
+                // CONTENT END  FOURTH
+
+                // CONTENT START  FIFTH
+                isGenerating
+                    ? Container(
+                      width: double.maxFinite,
+                      height: MediaQuery.of(context).size.height * 0.55,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: CupertinoColors.inactiveGray.withOpacity(0.2),
+                      ),
+                      child: SingleChildScrollView(
+                        child: Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children:
+                                groups.isNotEmpty
+                                    ? List.generate(currentGroup + 1, (index) {
+                                      return Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            "GROUP ${index + 1}",
+                                            style: TextStyle(
+                                              color: CupertinoColors
+                                                  .inactiveGray
+                                                  .withOpacity(0.8),
+                                              fontSize: 14,
+                                            ),
+                                          ),
+                                          ...groups[index]
+                                              .map(
+                                                (groupItem) => Text(groupItem),
+                                              )
+                                              .toList(),
+                                          SizedBox(height: 20),
+                                        ],
+                                      );
+                                    })
+                                    : [
+                                      Text(
+                                        "No groups generated yet.",
+                                        style: TextStyle(
+                                          color: CupertinoColors.inactiveGray,
+                                        ),
+                                      ),
+                                    ],
+                          ),
+                        ),
+                      ),
+                    )
+                    : SizedBox.shrink(),
+                // CONTENT END  FIFTH
               ],
             ),
           ),
