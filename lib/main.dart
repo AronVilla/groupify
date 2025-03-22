@@ -329,17 +329,156 @@ class _MyAppState extends State<MyApp> {
       child: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
-          child: SafeArea(child: Column(children: [
+          child: SafeArea(
+            child: Column(
+              children: [
+                // CONTENT START FIRST
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      padding: EdgeInsets.all(1),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: CupertinoColors.systemFill,
+                      ),
+                      width: MediaQuery.of(context).size.width * 0.73,
+                      child: CupertinoTextField(
+                        controller: itemController,
+                        padding: EdgeInsets.all(10),
+                        placeholder: "Add to List",
+                        placeholderStyle: TextStyle(
+                          color: CupertinoColors.inactiveGray,
+                        ),
+                        enabled: !isGenerating,
+                      ),
+                    ),
 
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: CupertinoColors.systemFill,
+                      ),
+                      width: MediaQuery.of(context).size.width * 0.13,
+                      child: CupertinoButton(
+                        padding: EdgeInsets.all(10),
+                        child: Icon(
+                          CupertinoIcons.add_circled_solid,
+                          color: CupertinoColors.systemBlue.withOpacity(0.9),
+                        ),
+                        onPressed: addItemToList,
+                      ),
+                    ),
+                  ],
+                ),
 
+                SizedBox(height: 10),
+                // CONTENT END  FIRST
 
-              
+                // CONTENT START  SECOND
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      padding: EdgeInsets.all(1),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: CupertinoColors.systemFill,
+                      ),
+                      width: MediaQuery.of(context).size.width * 0.56,
+                      child: CupertinoTextField(
+                        controller: groupController,
+                        padding: EdgeInsets.all(10),
+                        placeholder: "Group Members Count",
+                        placeholderStyle: TextStyle(
+                          color: CupertinoColors.inactiveGray,
+                        ),
+                        enabled: !isGenerating,
+                      ),
+                    ),
 
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: CupertinoColors.systemFill,
+                      ),
+                      width: MediaQuery.of(context).size.width * 0.13,
+                      child: CupertinoButton(
+                        padding: EdgeInsets.all(10),
+                        child: Icon(
+                          CupertinoIcons.arrow_clockwise,
+                          color: CupertinoColors.destructiveRed.withOpacity(1),
+                        ),
+                        onPressed: reset,
+                      ),
+                    ),
 
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: CupertinoColors.systemBlue.withOpacity(1),
+                      ),
+                      width: MediaQuery.of(context).size.width * 0.13,
+                      child: CupertinoButton(
+                        padding: EdgeInsets.all(10),
+                        child: Icon(
+                          CupertinoIcons.arrow_2_circlepath,
+                          color: CupertinoColors.white.withOpacity(1),
+                        ),
+                        onPressed:
+                            isGenerating ? showNextGroup : generateGroups,
+                      ),
+                    ),
+                  ],
+                ),
 
+                SizedBox(height: 15),
+                // CONTENT END  SECOND
 
+                // CONTENT START  THIRD
+                Container(
+                  width: double.maxFinite,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: CupertinoColors.inactiveGray.withOpacity(0.2),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child:
+                              isGenerating
+                                  ? Text(
+                                    "Keep clicking the generate button until all items are grouped.",
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      color: CupertinoColors.systemBlue,
+                                    ),
+                                    textAlign: TextAlign.start,
+                                    softWrap: true,
+                                  )
+                                  : Text(
+                                    "Items",
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      color: CupertinoColors.systemBlue,
+                                    ),
+                                    textAlign: TextAlign.start,
+                                    softWrap: true,
+                                  ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+
+                SizedBox(height: 15),
+
+                // CONTENT END  THIRD
               ],
-            )),
+            ),
+          ),
         ),
       ),
 
