@@ -1,4 +1,4 @@
-package com.example.groupify
+package com.devops.groupify
 
 import io.flutter.embedding.android.FlutterActivity
 
